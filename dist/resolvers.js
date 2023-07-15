@@ -24,7 +24,7 @@ function transformPokemonData(pokemonData) {
         })),
     };
 }
-export const resolvers = {
+const resolvers = {
     Query: {
         getPokemon: async (_parent, args) => {
             const { name } = args;
@@ -37,4 +37,4 @@ export const resolvers = {
         },
     },
 };
-// export default resolvers
+export default resolvers;

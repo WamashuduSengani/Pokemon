@@ -1,6 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import axios from "axios";
+// import axios from "axios";
 const typeDefs = `#graphql
 
 
@@ -63,6 +64,10 @@ const server = new ApolloServer({
     resolvers,
 });
 const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
+    listen: { port: Number(process.env.PORT) || 4000 },
 });
 console.log(`🚀  Server ready at: ${url}`);
+// const { url, port } = await server.listen({ port: process.env.PORT || 4000 });
+// console.log(`🚀 Server running 
+// 🔊 Listening on port ${port}
+// 👨🏾‍💻 Query at ${url}`);

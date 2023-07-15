@@ -1,4 +1,4 @@
-export const typeDefs = `#graphql
+const typeDefs = `#graphql
 
 
 type Pokemon {
@@ -17,4 +17,4 @@ type Pokemon {
     getAllPokemons: [Pokemon!]!
   }
 `;
-// export default typeDefs;
+export default typeDefs;
