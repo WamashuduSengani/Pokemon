@@ -4,8 +4,6 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 const typeDefs = `#graphql
-
-
 type Pokemon {
     name: String!
     height: Int!
