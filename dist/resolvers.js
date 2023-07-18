@@ -1,11 +1,11 @@
 import axios from "axios";
-async function fetchPokemonByName(name) {
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+const fetchPokemonByName = async (name) => {
+    const response = await axios.get(`${process.env.API_URL}pokemon/${name}`);
     const pokemonData = response.data;
     return transformPokemonData(pokemonData);
-}
-async function fetchAllPokemons() {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
+};
+const fetchAllPokemons = async () => {
+    const response = await axios.get(`${process.env.API_URL}pokemon`);
     const pokemons = response.data.results;
     const pokemonPromises = pokemons.map(async (pokemon) => {
         const response = await axios.get(pokemon.url);
@@ -13,8 +13,8 @@ async function fetchAllPokemons() {
         return transformPokemonData(pokemonData);
     });
     return Promise.all(pokemonPromises);
-}
-function transformPokemonData(pokemonData) {
+};
+const transformPokemonData = (pokemonData) => {
     return {
         name: pokemonData.name,
         height: pokemonData.height,
@@ -23,7 +23,7 @@ function transformPokemonData(pokemonData) {
             name: ability.ability.name,
         })),
     };
-}
+};
 const resolvers = {
     Query: {
         getPokemon: async (_parent, args) => {
